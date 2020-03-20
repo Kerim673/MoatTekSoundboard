@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoatTekSoundboard"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        ResizeMode="CanMinimize"
+        Title="MoatTek Soundboard" Height="350" Width="525">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="D:/Pictures/photoshop projectos/mts.jpg"/>
+        </Grid.Background>
+        <TextBlock Name="debugjit" TextWrapping="Wrap" Foreground="GreenYellow"></TextBlock>
+        <!--<Button Content="Play" Click="Button_Click" Margin="179,142,288,128"/>-->
+        <!--<TextBlock Foreground="#333333" Text="Moat Tek Software" Margin="378,287,-23,3"/>-->
         
+        <ItemsControl ItemsSource="{Binding Path=TheBoard}" Name="ButtonGrid" Height="205" Width="445" Margin="0,55,0,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Name="SoundButton" Tag="{Binding Path=AudioClipID}" Click="SoundButton_Click" Width="50" Height="50" Margin="10,10">
+                        <TextBlock TextWrapping="Wrap" Text="{Binding Path=ClipName}" TextAlignment="Center"/>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <StackPanel Orientation="Horizontal" Height="20" Margin="0,290,0,1">
+            <TextBlock Foreground="AliceBlue">Output Device #1</TextBlock>
+            <ComboBox Name="Output1Combo" Width="120" SelectionChanged="OutputCombo_SelectionChanged" Tag="1"></ComboBox>
+            <TextBlock Foreground="AliceBlue">Output Device #2</TextBlock>
+            <ComboBox Name="Output2Combo" Width="120" SelectionChanged="OutputCombo_SelectionChanged" Tag="2"></ComboBox>
+        </StackPanel>
     </Grid>
 </Window>
