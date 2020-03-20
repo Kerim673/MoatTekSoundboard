@@ -19,6 +19,7 @@ using System.Management;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Collections;
 
 namespace MoatTekSoundboard
 {
@@ -37,8 +38,10 @@ namespace MoatTekSoundboard
             InitializeComponent();
             AudioCollection Clips = AudioCollection.InitialiseLibrary();
             ButtonGrid.ItemsSource = AudioCollection.AudioLibrary;
+            //SoundPlayers.CreateSoundPlayers();
+            SoundPlayers.InitialisePlayers();
 
-            List <string> Devices = DetectAudioDevices();
+            List<string> Devices = DetectAudioDevices();
             Output1Combo.ItemsSource = Devices;
             Output2Combo.ItemsSource = Devices;
 
@@ -57,7 +60,7 @@ namespace MoatTekSoundboard
                 var caps = WaveOut.GetCapabilities(n);
                 devices.Add($"{n}: {caps.ProductName}");
             }
-
+            devices.RemoveAt(1);
             return devices;
         }
 
@@ -113,23 +116,28 @@ namespace MoatTekSoundboard
 
         private void SoundButton_Click(object sender, RoutedEventArgs e)
         {
-            outputDevice2.Stop();
-            outputDevice1.Stop();
+            //outputDevice2.Stop();
+            //outputDevice1.Stop();
 
             var ClipIDObj = ((Button)sender).Tag;
             int ClipID = Convert.ToInt32(ClipIDObj);
 
-            audioFile1 = new AudioFileReader(AudioCollection.AudioLibrary[ClipID].FilePath);
-            audioFile2 = new AudioFileReader(AudioCollection.AudioLibrary[ClipID].FilePath);
+            //audioFile1 = new AudioFileReader(AudioCollection.AudioLibrary[ClipID].FilePath);
+            //audioFile2 = new AudioFileReader(AudioCollection.AudioLibrary[ClipID].FilePath);
 
-            outputDevice1.Init(audioFile1);
-            outputDevice2.Init(audioFile2);
+            //outputDevice1.Init(audioFile1);
+            //outputDevice2.Init(audioFile2);
 
-            outputDevice1.Play();
-            outputDevice2.Play();
+            //outputDevice1.Play();
+            //outputDevice2.Play();
+
+            foreach (int i in Enumerable.Range(0, SoundPlayers.SoundPlayersCollection.Count))
+            {
+                SoundPlayers.SoundPlayersCollection[i].PlayFile(AudioCollection.AudioLibrary[ClipID].FilePath);
+            }
         }
 
-        private void OutputCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OutputCombo_SelectionChanged(object sender, SelectionChangedEventArgs e) // this will need to be modified to support scaling
         {
             var WhichBoxObj = ((ComboBox)sender).Tag;
             string WhichBox = WhichBoxObj.ToString();
@@ -138,21 +146,30 @@ namespace MoatTekSoundboard
             {
                 if (Output1Combo.SelectedItem == Output2Combo.SelectedItem)
                 {
+                    ChangeOutputDevice(0, Output1Combo.SelectedItem.ToString());
+                    ChangeOutputDevice(1, "None");
+                    Output2Combo.SelectedIndex = 0;
                     // set 1 to the device and 2 to null
                 }
+                ChangeOutputDevice(0, Output1Combo.SelectedItem.ToString());
             }
             if (WhichBox == "2")
             {
                 if (Output1Combo.SelectedItem == Output2Combo.SelectedItem)
                 {
+                    ChangeOutputDevice(1, Output2Combo.SelectedItem.ToString());
+                    ChangeOutputDevice(0, "None");
+                    Output1Combo.SelectedIndex = 0;
                     // set 2 to the device and 1 to null
                 }
+                ChangeOutputDevice(1, Output2Combo.SelectedItem.ToString());
+                SoundPlayers.StopAll();
             }
         }
 
-        public void ChangeOutputDevice(string OutputNumber, string AudioDevice)
+        public void ChangeOutputDevice(int OutputNumber, string AudioDevice)
         {
-
+            SoundPlayers.SoundPlayersCollection[OutputNumber].SwitchOutputDevice(AudioDevice);
         }
     }
 }
