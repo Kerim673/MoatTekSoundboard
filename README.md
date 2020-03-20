@@ -1,5 +1,6 @@
 # MoatTekSoundboard
 A soundboard meant for annoying other people in the TeamSpeak server.
+Intended to be used alongside [VB Audio Virtual Cable](https://www.vb-audio.com/Cable/), and supports up to 2 output devices.
 
 # Setting Up
 1) Build the project, and create a folder called "SoundFiles" in the same directory.
