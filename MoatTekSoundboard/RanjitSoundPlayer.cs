@@ -30,7 +30,7 @@ namespace MoatTekSoundboard
             }
             if (AudioDevice == "None")
             {
-                OutputDevice = null;
+                //OutputDevice = null;
             }
             else
             {
@@ -52,7 +52,6 @@ namespace MoatTekSoundboard
         {
             if (OutputDevice != null)
             {
-                OutputDevice.Stop();
                 AudioFile = new AudioFileReader(FilePath);
                 OutputDevice.Init(AudioFile);
                 OutputDevice.Play();

@@ -122,6 +122,8 @@ namespace MoatTekSoundboard
             var ClipIDObj = ((Button)sender).Tag;
             int ClipID = Convert.ToInt32(ClipIDObj);
 
+            SoundPlayers.StopAll();
+
             //audioFile1 = new AudioFileReader(AudioCollection.AudioLibrary[ClipID].FilePath);
             //audioFile2 = new AudioFileReader(AudioCollection.AudioLibrary[ClipID].FilePath);
 
