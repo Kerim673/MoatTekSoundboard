@@ -9,7 +9,7 @@
         Title="MoatTek Soundboard" Height="350" Width="525">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="D:/Pictures/photoshop projectos/mts.jpg"/>
+            <ImageBrush ImageSource="/Properties/mts.jpg"/>
         </Grid.Background>
         <TextBlock Name="debugjit" TextWrapping="Wrap" Foreground="GreenYellow"></TextBlock>
         <!--<Button Content="Play" Click="Button_Click" Margin="179,142,288,128"/>-->
