@@ -6,6 +6,11 @@ Intended to be used alongside [VB Audio Virtual Cable](https://www.vb-audio.com/
 1) Build the project, and create a folder called "SoundFiles" in the same directory.
 2) Add your desired mp3 files to the folder.
 
+## Custom Button Colours
+Lots of grey buttons are boring, so now you can customise the colours. Just add a hex code (excluding the #) and an underscore to the beginning of the file. The hex code and the underscore will not show on on the button. Example below:
+
+FF0000_ThisWillBeRed.mp3
+
 # Known issues
 - Adding too many mp3 files will cause the buttons to misbehave
 - Pressing the buttons and changing audio devices too quickly will cause the program to crash.
