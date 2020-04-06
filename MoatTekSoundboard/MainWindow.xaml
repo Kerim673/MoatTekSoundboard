@@ -23,7 +23,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Name="SoundButton" Tag="{Binding Path=AudioClipID}" Click="SoundButton_Click" Width="50" Height="50" Margin="10,10">
+                    <Button Name="SoundButton" Background="{Binding Path=BgColour}" Tag="{Binding Path=AudioClipID}" Click="SoundButton_Click" Width="50" Height="50" Margin="10,10">
                         <TextBlock TextWrapping="Wrap" Text="{Binding Path=ClipName}" TextAlignment="Center"/>
                     </Button>
                 </DataTemplate>

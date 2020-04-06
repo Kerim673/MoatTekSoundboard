@@ -54,6 +54,7 @@ namespace MoatTekSoundboard
             {
                 AudioFile = new AudioFileReader(FilePath);
                 OutputDevice.Init(AudioFile);
+                //OutputDevice.Volume = 0.1F;
                 OutputDevice.Play();
             }
 
