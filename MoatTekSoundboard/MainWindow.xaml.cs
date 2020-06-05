@@ -173,5 +173,21 @@ namespace MoatTekSoundboard
         {
             SoundPlayers.SoundPlayersCollection[OutputNumber].SwitchOutputDevice(AudioDevice);
         }
+
+        private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            try
+            {
+                outputDevice1.Volume = (float)VolumeSlider.Value / 100;
+                outputDevice2.Volume = (float)VolumeSlider.Value / 100;
+            }
+            catch (NullReferenceException)
+            {
+                // The either of the two output devices dont have a device selected for them, it will cause a NullReferenceException.
+                // This is not the best solution.
+
+            }
+
+        }
     }
 }

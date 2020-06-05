@@ -34,6 +34,7 @@
             <ComboBox Name="Output1Combo" Width="120" SelectionChanged="OutputCombo_SelectionChanged" Tag="1"></ComboBox>
             <TextBlock Foreground="AliceBlue">Output Device #2</TextBlock>
             <ComboBox Name="Output2Combo" Width="120" SelectionChanged="OutputCombo_SelectionChanged" Tag="2"></ComboBox>
+            <Slider Name="VolumeSlider" Width="60" Margin="10,0,0,0" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True" Value="100" ValueChanged="VolumeSlider_ValueChanged"></Slider>
         </StackPanel>
     </Grid>
 </Window>
