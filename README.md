@@ -16,3 +16,25 @@ FF0000_ThisWillBeRed.mp3
 - Pressing the buttons and changing audio devices too quickly will cause the program to crash.
 - Pressing a button while another is playing will stop the current playing sound without playing the new one.
 - Output devices bar at the bottom looks ugly
+
+# To do
+- Add volume control.
+- Search for other file types (such as WAV etc).
+- sizing options for everything.
+
+---
+
+# Changelog
+
+# V1.2
+- Made text on buttons slightly smaller.
+
+---
+
+# V1.1
+- Added ability to colour different sound clips.
+
+---
+
+# V1
+- Basic soundboard made.
