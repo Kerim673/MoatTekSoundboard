@@ -18,13 +18,15 @@ FF0000_ThisWillBeRed.mp3
 - Output devices bar at the bottom looks ugly
 
 # To do
-- Add volume control.
 - Search for other file types (such as WAV etc).
 - sizing options for everything.
 
 ---
 
 # Changelog
+# V1.3
+- Added a volume slider that contorls both of the outputs' volumes. Not the most efficient solution but it seems to work.
+---
 
 # V1.2
 - Made text on buttons slightly smaller.
