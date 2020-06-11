@@ -66,6 +66,9 @@ namespace MoatTekSoundboard
             {
                 OutputDevice.Dispose();
                 AudioFile.Dispose(); // crashes when it the first
+                //
+                //                      ^^ 
+                //                      What tf does this even mean?? Leave better comments please.
             }
 
         }

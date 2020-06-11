@@ -178,8 +178,12 @@ namespace MoatTekSoundboard
         {
             try
             {
-                outputDevice1.Volume = (float)VolumeSlider.Value / 100;
-                outputDevice2.Volume = (float)VolumeSlider.Value / 100;
+                //outputDevice1.Volume = (float)VolumeSlider.Value / 100;
+                //outputDevice2.Volume = (float)VolumeSlider.Value / 100;
+                foreach (int i in Enumerable.Range(0, SoundPlayers.SoundPlayersCollection.Count))
+                {
+                    SoundPlayers.SoundPlayersCollection[i].OutputDevice.Volume = (float)VolumeSlider.Value / 100;
+                }
             }
             catch (NullReferenceException)
             {
